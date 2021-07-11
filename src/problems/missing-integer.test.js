@@ -1,7 +1,7 @@
 const { findMissingInteger, insertNumber } = require("./missing-integer");
 
 describe('findMissingNumber', () => {
-  describe.only('basic cases', () => {
+  describe('basic cases', () => {
     test.each([
       {name: 'ordered',         seq: [1,2,3,4,6,7,8,9], answer:5 },
       {name: 'reverse ordered', seq: [9,8,7,6,4,3,2,1], answer:5 },

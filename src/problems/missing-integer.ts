@@ -30,11 +30,13 @@ export const insertNumber = (startRange: Range, subject: number): Range => {
   let currentRange: Range | undefined = startRange
   let nextRange = currentRange.nextRange;
   let foundMatch = false
+  // console.log('insert ' + subject)
   while (currentRange && !foundMatch) {
+    nextRange = currentRange.nextRange
     if (subject < currentRange.start) {
       if (subject === currentRange.start - 1) {
         // extend the current range
-        // console.log('extend down')
+        console.log('extend down')
         currentRange.start = currentRange.start - 1
         foundMatch = true;
       } else {
@@ -51,19 +53,19 @@ export const insertNumber = (startRange: Range, subject: number): Range => {
       if (subject === currentRange.end + 1) {
         if (nextRange !== undefined && nextRange.start === subject + 1) {
           // join the 2 ranges
-          // console.log('join')
+          console.log('join')
           currentRange.end = nextRange.end
           currentRange.nextRange = nextRange.nextRange
           foundMatch = true;
         } else {        
           // extend the current range
-          // console.log('extend 1')
+          console.log('extend up ' + JSON.stringify(currentRange))
           currentRange.end = currentRange.end + 1
           foundMatch = true;
         }
       } else if (currentRange.nextRange === undefined) {
         // create a new distant range
-        // console.log('new end')
+        console.log('new end')
         currentRange.nextRange = {
           start: subject,
           end: subject
