@@ -7,5 +7,10 @@
   "plugins": ["jest"],
   "env": {
     "jest/globals": true
+  },
+  "settings": {
+    "node": {
+      "tryExtensions": [".js", ".ts"]
+    }
   }
 }
