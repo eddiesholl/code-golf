@@ -1,9 +1,11 @@
 const { findMissingInteger, insertNumber } = require("./missing-integer");
 
 describe('findMissingNumber', () => {
-  describe('basic cases', () => {
+  describe.only('basic cases', () => {
     test.each([
-      {name: 'ordered', seq: [1,2,3,4,6,7,8,9], answer:5 }
+      {name: 'ordered',         seq: [1,2,3,4,6,7,8,9], answer:5 },
+      {name: 'reverse ordered', seq: [9,8,7,6,4,3,2,1], answer:5 },
+      {name: 'mixed',           seq: [9,1,7,2,3,4,8,6], answer:5 }
     ])('basic case $name', ({ seq, answer }) => {
       expect(findMissingInteger(seq)).toEqual(answer);
     })
